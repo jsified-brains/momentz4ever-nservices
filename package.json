@@ -1,0 +1,29 @@
+{
+  "name": "momentz4ever-services",
+  "version": "1.0.0",
+  "description": "json",
+  "main": "index.js",
+  "scripts": {
+    "test": "-v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github"
+  },
+  "author": "rs",
+  "license": "ISC",
+  "keywords": [
+    "js"
+  ],
+  "dependencies": {
+    "@types/express": "^4.0.35",
+    "@types/node": "^7.0.21",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "tslint": "^5.2.0",
+    "typescript": "^2.3.2",
+    "typings": "^2.1.1"
+  }
+}
