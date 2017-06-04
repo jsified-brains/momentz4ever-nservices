@@ -4,7 +4,8 @@
   "description": "json",
   "main": "index.js",
   "scripts": {
-    "test": "-v"
+    "test": "-v",
+    "compileStart" : "tsc && node build\\app.js"
   },
   "repository": {
     "type": "git",
