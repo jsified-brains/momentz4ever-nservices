@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-let app = express();
-app.get("/", (req, res) => {
-    res.send("hello from NodeJS/Express");
-});
-//start the  express application (web server) and keep listening for any reqest sent to port 1337
-app.listen(1337, () => console.log("ready on port 1337"));
+//import bodyParser from 'body-parser';
+var app = express();
+//configure app
+//app.set('view engine','ejs');
+//app.set('views',path.join(__dirname,'views'));
+app.use(require('./albums'));
+app.use(require('./users'));
+app.listen(1337, () => console.log('ready on port 1337'));
