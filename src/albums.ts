@@ -25,6 +25,15 @@ router.get('/albums',function(req,res){
     res.send(myAlbums);
 });
 
+router.get('/albums/:id',function(req,res){
+    console.log(req.params.id);
+    let albumWithId=myAlbums.filter(function(album){
+        return album.id===req.params.id;
+    });
+    res.send(albumWithId[0]);
+});
+
+
 // router.post('/albums',function(req,res){
 //     let newAlbum=req.body.newAlbum;
 //     myAlbums.push(newAlbum);
