@@ -1,8 +1,47 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-//import bodyParser from 'body-parser';
+const bodyParser = require("body-parser");
+const minimist = require("minimist");
+const swaggerNodeExpress = require("swagger-node-express");
 var app = express();
+var subpath = express();
+var argv = minimist(process.argv.slice(2));
+app.use(bodyParser());
+app.use("/v1", subpath);
+var swagger = swaggerNodeExpress.createNew(subpath);
+app.use(express.static('swagger'));
+//setting up swagger  config
+swagger.setApiInfo({
+    title: "example API",
+    description: "API to do something, manage something...",
+    termsOfServiceUrl: "",
+    contact: "yourname@something.com",
+    license: "",
+    licenseUrl: ""
+});
+//setting up route for swagger index.html
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/swagger/index.html');
+});
+//setting up URL for swagger api - docs
+swagger.configureSwaggerPaths('', 'api-docs', '');
+// Configure the API domain
+var domain = 'localhost';
+if (argv.domain !== undefined)
+    domain = argv.domain;
+else
+    console.log('No --domain=xxx specified, taking default hostname "localhost".');
+// Configure the API port
+var port = 1337;
+if (argv.port !== undefined)
+    port = argv.port;
+else
+    console.log('No --port=xxx specified, taking default port ' + port + '.');
+// Set and display the application URL
+var applicationUrl = 'http://' + domain + ':' + port;
+console.log('snapJob API running on ' + applicationUrl);
+swagger.configure(applicationUrl, '1.0.0');
 //configure app
 //app.set('view engine','ejs');
 //app.set('views',path.join(__dirname,'views'));

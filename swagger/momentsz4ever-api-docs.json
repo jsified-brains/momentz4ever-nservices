@@ -1,0 +1,156 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Momentz-4-ever API specs",
+    "description": "Momentz-4-ever API specs",
+    "termsOfService": ""
+  },
+  "basePath": "/",
+  "tags" : [
+    {
+        "name": "Tag1", 
+        "description": "API for Momentz-4-ever"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users": {
+       "get": {
+          "tags": ["users"],
+          "description": "Gets all the Users of the application",
+          "operationId": "get",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "returns an array of users",
+              "schema": {
+                 "$ref": "#/definitions/usersResponse"
+              }
+            }
+          }
+        }
+    },
+    "/albums/{someVariable}": {
+        "delete":{
+          "tags":["albums"],
+          "description":"Deletes a something",
+          "operationId":"delete",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+              {
+                "name": "someVariable",
+                "in": "path",
+                "description": "ID to delete",
+                "required": true,
+                "type": "string"
+              }
+            ],
+          "responses": {
+            "200": {
+              "description": "delete response",
+              "schema":{
+                "$ref":"#/definitions/deleteRes"
+              }
+            }
+          }
+        },
+      "get":{
+          "tags": [ "Tag1"],
+          "description": "Returns the status of something",
+          "operationId": "findById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+              {
+                "name": "ID",
+                "in": "path",
+                "description": "ID to fetch",
+                "required": true,
+                "type": "string"
+              }
+            ],
+        "responses": {
+            "200": {
+              "description": "response",
+              "schema": {
+                "$ref": "#/definitions/response1"
+              }
+            }
+          }
+        }
+      }
+  },
+  "definitions": {
+    "create": {
+      "properties": {
+        "eventId": {
+          "required":true,
+          "type": "string",
+          "example": "mathmaticial"
+        },
+        "numberRequired": {
+          "required":true,
+          "type":"integer",
+          "format": "int64",
+          "example": 500
+        } 
+      }
+    },
+    "usersResponse": {
+        "properties": {
+            "jobID": {
+              "id":"string","firstName":"string","lastName":"string","email":"string"
+            }
+        }
+    },
+    "response1": {
+        "id":"string","firstName":"string","lastName":"string","email":"string"
+    },
+    "response": {
+        "properties": {
+            "jobID": {
+              "required": true,
+              "type" : "string",
+              "example" : "12321432423"
+            }
+        }
+    },
+    "delete": {
+        "properties": {
+            "jobID": {
+              "required": true,
+              "type" : "string",
+              "example" : "234344234234"
+            },
+            "status" : {
+              "required": true,
+              "type": "string",
+              "example": "deleted"
+            }
+        }
+    },
+    "400error" : {
+       "properties": {
+        "message": {
+          "type": "string",
+          "example" : "400 Bad Request"
+        }
+      }
+    }
+  }
+}
