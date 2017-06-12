@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "-v",
-    "compileStart" : "tsc && node build\\app.js"
+    "compileStart": "tsc && node build\\app.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,11 @@
   "dependencies": {
     "@types/express": "^4.0.35",
     "@types/node": "^7.0.21",
+    "body-parser": "^1.17.2",
     "ejs": "^2.5.6",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "minimist": "^1.2.0",
+    "swagger-node-express": "^2.1.3"
   },
   "devDependencies": {
     "tslint": "^5.2.0",
