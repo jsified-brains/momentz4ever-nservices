@@ -36,7 +36,78 @@
             "200": {
               "description": "returns an array of users",
               "schema": {
-                 "$ref": "#/definitions/usersResponse"
+                 "$ref": "#/definitions/response"
+              }
+            }
+          }
+        }
+    },
+    "/albums": {
+       "get": {
+          "tags": ["albums"],
+          "description": "Gets all the Albums of the application",
+          "operationId": "get",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "returns an array of albums",
+              "schema": {
+                 "$ref": "#/definitions/response"
+              }
+            }
+          }
+        }
+    },
+    "/albumspost":{
+          "post":{
+          "tags":["albums post"],
+          "description":"Adds an album",
+          "operationId":"post",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":
+              {
+                "name": "someVariable",
+                "in": "path",
+                "description": "ID to post",
+                "required": true,
+                "type": "string"
+              },
+          "responses": {
+            "201": {
+              "description": "post response",
+              "schema":{
+                "$ref":"#/definitions/create"
+              }
+            }
+          }
+        }
+    },
+    "/userspost":{
+          "post":{
+          "tags":["Users post"],
+          "description":"Adds an User",
+          "operationId":"post",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":
+              {
+                "name": "someVariable",
+                "in": "path",
+                "description": "ID to post",
+                "required": true,
+                "type": "string"
+              },
+          "responses": {
+            "201": {
+              "description": "post response",
+              "schema":{
+                "$ref":"#/definitions/create"
               }
             }
           }
@@ -45,7 +116,7 @@
     "/albums/{someVariable}": {
         "delete":{
           "tags":["albums"],
-          "description":"Deletes a something",
+          "description":"Deletes an album",
           "operationId":"delete",
           "produces": [
             "application/json"
@@ -63,7 +134,7 @@
             "200": {
               "description": "delete response",
               "schema":{
-                "$ref":"#/definitions/deleteRes"
+                "$ref":"#/definitions/delete"
               }
             }
           }
