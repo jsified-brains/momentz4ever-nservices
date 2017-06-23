@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Momentz-4-ever API specs",
+    "title": "Momentz-4-ever Services",
     "description": "Momentz-4-ever API specs",
     "termsOfService": ""
   },
@@ -25,7 +25,7 @@
   "paths": {
     "/users": {
        "get": {
-          "tags": ["users"],
+          "tags": ["Users"],
           "description": "Gets all the Users of the application",
           "operationId": "get",
           "produces": [
@@ -33,62 +33,217 @@
           ],
           "parameters": [],
           "responses": {
+            "default":{
+              "description":"Bad Request"
+            },
             "200": {
               "description": "returns an array of users",
               "schema": {
-                 "$ref": "#/definitions/usersResponse"
+                "type" : "array",
+               "items": {
+                 "$ref": "#/definitions/Users"
+              } 
+            }
+          }
+        }
+      },
+      "post":{
+          "tags":["Users"],
+          "description":"Adds an User",
+          "operationId":"post",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+              {
+                "name": "body",
+                "in": "body",
+                "description": "User object to be updated",
+                "required": true,
+                "schema": {
+                     "$ref": "#/definitions/Users"
+                }
+              }
+          ],
+          "responses": {
+             "default":{
+              "description":"Bad Request"
+            },
+            "201": {
+              "description": "Successfully created",
+              "schema":{
+                "$ref":"#/definitions/Users"
               }
             }
           }
         }
     },
-    "/albums/{someVariable}": {
+    "/albums": {
+       "get": {
+          "tags": ["Albums"],
+          "description": "Gets all the Albums of the application",
+          "operationId": "get",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+             "default":{
+              "description":"Bad Request"
+            },
+            "200": {
+              "description": "returns an array of albums",
+              "schema": {
+                 "type" : "array",
+               "items": {
+                 "$ref": "#/definitions/Albums"
+              } 
+              }
+            }
+          }
+        },
+      "post":{
+          "tags":["Albums"],
+          "description":"Adds an album",
+          "operationId":"post",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+              {
+                "name": "body",
+                "in": "body",
+                "description": "Albums object that needs to be updated",
+                "required": true,
+                "schema": {
+                     "$ref": "#/definitions/Albums"
+                }
+              }       
+          ],
+          "responses": {
+             "default":{
+              "description":"Bad Request"
+            },
+            "201": {
+              "description": "Successfully created",
+              "schema":{
+                "$ref":"#/definitions/Albums"
+              }
+            }
+          }
+        }
+    },
+    "/albums/{id}": {
         "delete":{
-          "tags":["albums"],
-          "description":"Deletes a something",
+          "tags":["Albums by ID"],
+          "description":"Deletes an album",
           "operationId":"delete",
           "produces": [
             "application/json"
           ],
           "parameters":[
               {
-                "name": "someVariable",
+                "name": "id",
                 "in": "path",
-                "description": "ID to delete",
+                "description": "Album-Id to delete",
                 "required": true,
                 "type": "string"
               }
             ],
           "responses": {
+             "default":{
+              "description":"Album not found"
+            },
             "200": {
-              "description": "delete response",
+              "description": "Successful Operation",
               "schema":{
-                "$ref":"#/definitions/deleteRes"
+                "$ref":"#/definitions/Albums"
               }
             }
           }
         },
       "get":{
-          "tags": [ "Tag1"],
-          "description": "Returns the status of something",
+          "tags": [ "Albums by ID"],
+          "description": "Returns a single album",
           "operationId": "findById",
           "produces": [
             "application/json"
           ],
           "parameters": [
               {
-                "name": "ID",
+                "name": "id",
                 "in": "path",
-                "description": "ID to fetch",
+                "description": "Id of Album to return",
                 "required": true,
                 "type": "string"
               }
             ],
         "responses": {
+           "default":{
+              "description":"Album not found"
+            },
             "200": {
-              "description": "response",
+              "description": "Successful Operation",
               "schema": {
-                "$ref": "#/definitions/response1"
+                "$ref": "#/definitions/Albums"
+              }
+            }
+          }
+        }
+      },
+  "/users/{id}": {
+        "delete":{
+          "tags":["Users by ID"],
+          "description":"Deletes a User",
+          "operationId":"delete",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+              {
+                "name": "id",
+                "in": "path",
+                "description": "User-Id to delete",
+                "required": true,
+                "type": "string"
+              }
+            ],
+          "responses": {
+             "default":{
+              "description":"User not found"
+            },
+            "200": {
+              "description": "Successful Operation",
+              "schema":{
+                "$ref":"#/definitions/Users"
+              }
+            }
+          }
+        },
+      "get":{
+          "tags": [ "Users by ID"],
+          "description": "Returns a User",
+          "operationId": "findById",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "description": "Id of User to return",
+                "required": true,
+                "type": "string"
+              }
+            ],
+        "responses": {
+           "default":{
+              "description":"User not found"
+            },
+            "200": {
+              "description": "Successful Operation",
+              "schema": {
+                "$ref": "#/definitions/Users"
               }
             }
           }
@@ -96,61 +251,54 @@
       }
   },
   "definitions": {
-    "create": {
+    "Users": {
       "properties": {
-        "eventId": {
-          "required":true,
-          "type": "string",
-          "example": "mathmaticial"
+         "id": {
+          "type": "integer",
+          "example": "0"
         },
-        "numberRequired": {
-          "required":true,
-          "type":"integer",
-          "format": "int64",
-          "example": 500
-        } 
+         "firstName":{
+           "type": "string",
+           "example": "James"
+        },
+         "lastName":{
+           "type": "string",
+           "example": "Turner"
+        },
+         "email":{
+           "type": "string",
+           "example": "Turner@gmail.com"
+        }
       }
     },
-    "usersResponse": {
+
+    "Albums": {
         "properties": {
-            "jobID": {
-              "id":"string","firstName":"string","lastName":"string","email":"string"
-            }
-        }
-    },
-    "response1": {
-        "id":"string","firstName":"string","lastName":"string","email":"string"
-    },
-    "response": {
-        "properties": {
-            "jobID": {
-              "required": true,
-              "type" : "string",
-              "example" : "12321432423"
-            }
-        }
-    },
-    "delete": {
-        "properties": {
-            "jobID": {
-              "required": true,
-              "type" : "string",
-              "example" : "234344234234"
-            },
-            "status" : {
-              "required": true,
-              "type": "string",
-              "example": "deleted"
-            }
-        }
-    },
-    "400error" : {
-       "properties": {
-        "message": {
+        "title":{
           "type": "string",
-          "example" : "400 Bad Request"
+          "example": "Album 1"
+        },
+        "id": {
+          "type": "integer",
+          "example": "0"
+        },
+        "description":{
+          "type": "string",
+          "example": "This is the first Album"
+        },
+        "imageUrl":{
+          "type": "string",
+          "example": "https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png"
+        },
+        "createdDate":{
+          "type": "string",
+          "example": "05/07/2017"
+        },
+        "lastViewedOn":{
+          "type": "string",
+          "example": "05/08/2017"
         }
-      }
+        }
     }
-  }
+   }
 }

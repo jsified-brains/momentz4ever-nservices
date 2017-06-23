@@ -6,6 +6,7 @@
 /out-tsc
 /build
 
+
 # dependencies
 /node_modules
 
@@ -22,7 +23,7 @@
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
+.vscode/launch.json
 !.vscode/extensions.json
 
 # misc

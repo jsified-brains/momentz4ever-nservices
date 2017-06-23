@@ -21,10 +21,11 @@ router.get('/users',function(req,res){
     res.send(myUsers);
 });
 
-// router.post('/albums',function(req,res){
-//     let newAlbum=req.body.newAlbum;
-//     myAlbums.push(newAlbum);
-//     res.send(myAlbums);
-// });
+router.post('/users',function(req,res){
+     let newUser=req.body;
+     myUsers.push(newUser);
+     res.send({"result":"User Added Sussesfully",
+    "updatedUsers":myUsers});
+});
 
 module.exports = router;

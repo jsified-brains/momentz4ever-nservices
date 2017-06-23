@@ -34,10 +34,10 @@ router.get('/albums/:id',function(req,res){
 });
 
 
-// router.post('/albums',function(req,res){
-//     let newAlbum=req.body.newAlbum;
-//     myAlbums.push(newAlbum);
-//     res.send(myAlbums);
-// });
+router.post('/albums',function(req,res){
+     let newAlbum=req.body;
+     myAlbums.push(newAlbum);
+     res.send(myAlbums);
+});
 
 module.exports = router;
