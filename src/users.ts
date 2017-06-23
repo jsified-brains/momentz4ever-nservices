@@ -21,7 +21,7 @@ router.get('/users',function(req,res){
     res.send(myUsers);
 });
 
-router.post('/userspost',function(req,res){
+router.post('/users',function(req,res){
      let newUser=req.body;
      myUsers.push(newUser);
      res.send({"result":"User Added Sussesfully",

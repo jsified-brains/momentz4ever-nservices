@@ -46,7 +46,37 @@
             }
           }
         }
-       }
+       },
+         "post":{
+          "tags":["Users"],
+          "description":"Adds an User",
+          "operationId":"post",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+              {
+                "name": "body",
+                "in": "body",
+                "description": "User object to be updated",
+                "required": true,
+                "schema": {
+                     "$ref": "#/definitions/Users"
+                }
+              }
+          ],
+          "responses": {
+             "default":{
+              "description":"Bad Request"
+            },
+            "201": {
+              "description": "Successfully created",
+              "schema":{
+                "$ref":"#/definitions/Users"
+              }
+            }
+          }
+    }
     },
     "/albums": {
        "get": {
@@ -71,10 +101,8 @@
               }
             }
           }
-        }
-    },
-    "/albumspost":{
-          "post":{
+        },
+      "post":{
           "tags":["Albums"],
           "description":"Adds an album",
           "operationId":"post",
@@ -104,39 +132,7 @@
             }
           }
         }
-    },
-    "/userspost":{
-          "post":{
-          "tags":["Users"],
-          "description":"Adds an User",
-          "operationId":"post",
-          "produces": [
-            "application/json"
-          ],
-          "parameters":[
-              {
-                "name": "body",
-                "in": "body",
-                "description": "User object to be updated",
-                "required": true,
-                "schema": {
-                     "$ref": "#/definitions/Users"
-                }
-              }
-          ],
-          "responses": {
-             "default":{
-              "description":"Bad Request"
-            },
-            "201": {
-              "description": "Successfully created",
-              "schema":{
-                "$ref":"#/definitions/Users"
-              }
-            }
-          }
-        }
-    },
+  },
     "/albums/{id}": {
         "delete":{
           "tags":["Albums by ID"],

@@ -34,7 +34,7 @@ router.get('/albums/:id',function(req,res){
 });
 
 
-router.post('/albumspost',function(req,res){
+router.post('/albums',function(req,res){
      let newAlbum=req.body;
      myAlbums.push(newAlbum);
      res.send(myAlbums);
