@@ -46,67 +46,8 @@
             }
           }
         }
-       }
-    },
-    "/albums": {
-       "get": {
-          "tags": ["Albums"],
-          "description": "Gets all the Albums of the application",
-          "operationId": "get",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [],
-          "responses": {
-             "default":{
-              "description":"Bad Request"
-            },
-            "200": {
-              "description": "returns an array of albums",
-              "schema": {
-                 "type" : "array",
-               "items": {
-                 "$ref": "#/definitions/Albums"
-              } 
-              }
-            }
-          }
-        }
-    },
-    "/albumspost":{
-          "post":{
-          "tags":["Albums"],
-          "description":"Adds an album",
-          "operationId":"post",
-          "produces": [
-            "application/json"
-          ],
-          "parameters":[
-              {
-                "name": "body",
-                "in": "body",
-                "description": "Albums object that needs to be updated",
-                "required": true,
-                "schema": {
-                     "$ref": "#/definitions/Albums"
-                }
-              }       
-          ],
-          "responses": {
-             "default":{
-              "description":"Bad Request"
-            },
-            "201": {
-              "description": "Successfully created",
-              "schema":{
-                "$ref":"#/definitions/Albums"
-              }
-            }
-          }
-        }
-    },
-    "/userspost":{
-          "post":{
+      },
+      "post":{
           "tags":["Users"],
           "description":"Adds an User",
           "operationId":"post",
@@ -132,6 +73,61 @@
               "description": "Successfully created",
               "schema":{
                 "$ref":"#/definitions/Users"
+              }
+            }
+          }
+        }
+    },
+    "/albums": {
+       "get": {
+          "tags": ["Albums"],
+          "description": "Gets all the Albums of the application",
+          "operationId": "get",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+             "default":{
+              "description":"Bad Request"
+            },
+            "200": {
+              "description": "returns an array of albums",
+              "schema": {
+                 "type" : "array",
+               "items": {
+                 "$ref": "#/definitions/Albums"
+              } 
+              }
+            }
+          }
+        },
+      "post":{
+          "tags":["Albums"],
+          "description":"Adds an album",
+          "operationId":"post",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+              {
+                "name": "body",
+                "in": "body",
+                "description": "Albums object that needs to be updated",
+                "required": true,
+                "schema": {
+                     "$ref": "#/definitions/Albums"
+                }
+              }       
+          ],
+          "responses": {
+             "default":{
+              "description":"Bad Request"
+            },
+            "201": {
+              "description": "Successfully created",
+              "schema":{
+                "$ref":"#/definitions/Albums"
               }
             }
           }
