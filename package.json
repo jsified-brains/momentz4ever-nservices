@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "-v",
-    "start": "tsc && node build/app.js",
-    "postinstall": "tsc && node build/app.js"
+    "postinstall": "tsc && node build/app.js --domain=http://momentz4ever-services.azurewebsites.net "
   },
   "repository": {
     "type": "git",
