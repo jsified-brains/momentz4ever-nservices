@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "-v",
-    "postinstall": "node build\\app.js --domain=momentz4ever-services.azurewebsites.net --port=80"
+    "postinstall": "node build\\app.js"
   },
   "repository": {
     "type": "git",
