@@ -89,7 +89,7 @@ goto :EOF
 echo Handling node.js deployment.
 
 
-:: 0. Create empty lib\app.js to make KuduSync happy
+:: 0. Create empty build\app.js to make KuduSync happy
 :: see https://github.com/projectkudu/kudu/issues/1753
 call :ExecuteCmd mkdir "%DEPLOYMENT_SOURCE%\build"
 call :ExecuteCmd copy NUL "%DEPLOYMENT_SOURCE%\build\app.js"
