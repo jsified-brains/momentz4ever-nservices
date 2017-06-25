@@ -7,14 +7,8 @@
     "termsOfService": ""
   },
   "basePath": "/",
-  "tags" : [
-    {
-        "name": "Tag1", 
-        "description": "API for Momentz-4-ever"
-    }
-  ],
   "schemes": [
-    "https"
+    "http"
   ],
   "consumes": [
     "application/json"
