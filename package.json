@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "-v",
-    "postinstall": "tsc && node build/app.js"
+    "start": "tsc && node build/app.js"
   },
   "repository": {
     "type": "git",
