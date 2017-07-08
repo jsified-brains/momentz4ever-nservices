@@ -6,7 +6,7 @@
   "scripts": {
     "test": "-v",
     "build": "tsc",
-    "startServer": "node build\\app.js"
+    "startServer": "node build/app.js"
   },
   "repository": {
     "type": "git",
