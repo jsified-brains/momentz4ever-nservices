@@ -31,7 +31,6 @@
     "swagger-node-express": "^2.1.3"
   },
   "devDependencies": {
-    "@types/node": "^7.0.32",
     "tslint": "^5.2.0",
     "typescript": "^2.3.2",
     "typings": "^2.1.1"
