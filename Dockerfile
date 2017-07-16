@@ -1,9 +1,9 @@
 FROM node:7.0.0
 
-RUN git clone https://github.com/jsified-brains/momentz4ever-services.git /var/www \
-    && cd /var/www \
+RUN npm install --global typescript \
     && npm install --global rimraf \
-    && npm run clean \
+    && git clone https://github.com/jsified-brains/momentz4ever-services.git /var/www \
+	&& cd /var/www \
     && npm install \
     && npm run build
 
