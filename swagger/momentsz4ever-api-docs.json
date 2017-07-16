@@ -7,14 +7,8 @@
     "termsOfService": ""
   },
   "basePath": "/",
-  "tags" : [
-    {
-        "name": "Tag1", 
-        "description": "API for Momentz-4-ever"
-    }
-  ],
   "schemes": [
-    "https"
+    "http"
   ],
   "consumes": [
     "application/json"
@@ -46,8 +40,8 @@
             }
           }
         }
-      },
-      "post":{
+       },
+         "post":{
           "tags":["Users"],
           "description":"Adds an User",
           "operationId":"post",
@@ -76,7 +70,7 @@
               }
             }
           }
-        }
+    }
     },
     "/albums": {
        "get": {
@@ -132,8 +126,42 @@
             }
           }
         }
-    },
+  },
     "/albums/{id}": {
+          "put":{
+          "tags":["Albums by ID"],
+          "description":"Updates an album",
+          "operationId":"put",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Album id that needs to be updated",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                  "name": "body",
+                  "in": "body",
+                  "description": "Album object that needs to be updated",
+                  "required": true,
+                  "schema": {
+                     "$ref": "#/definitions/Albums"
+                }
+              }   
+            ],
+          "responses": {
+             "201": {
+              "description": "Successfully created",
+              "schema":{
+                "$ref":"#/definitions/Albums"
+              }
+            }
+          }
+        },
         "delete":{
           "tags":["Albums by ID"],
           "description":"Deletes an album",
@@ -151,9 +179,6 @@
               }
             ],
           "responses": {
-             "default":{
-              "description":"Album not found"
-            },
             "200": {
               "description": "Successful Operation",
               "schema":{
@@ -179,10 +204,7 @@
               }
             ],
         "responses": {
-           "default":{
-              "description":"Album not found"
-            },
-            "200": {
+           "200": {
               "description": "Successful Operation",
               "schema": {
                 "$ref": "#/definitions/Albums"
@@ -192,6 +214,40 @@
         }
       },
   "/users/{id}": {
+        "put":{
+          "tags":["Users by ID"],
+          "description":"Updates an User",
+          "operationId":"put",
+          "produces": [
+            "application/json"
+          ],
+          "parameters":[
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "USer id that needs to be updated",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                  "name": "body",
+                  "in": "body",
+                  "description": "User object that needs to be updated",
+                  "required": true,
+                  "schema": {
+                     "$ref": "#/definitions/Users"
+                }
+              }   
+            ],
+          "responses": {
+             "201": {
+              "description": "Successfully created",
+              "schema":{
+                "$ref":"#/definitions/Users"
+              }
+            }
+          }
+        },
         "delete":{
           "tags":["Users by ID"],
           "description":"Deletes a User",
@@ -209,10 +265,7 @@
               }
             ],
           "responses": {
-             "default":{
-              "description":"User not found"
-            },
-            "200": {
+             "200": {
               "description": "Successful Operation",
               "schema":{
                 "$ref":"#/definitions/Users"
@@ -237,10 +290,7 @@
               }
             ],
         "responses": {
-           "default":{
-              "description":"User not found"
-            },
-            "200": {
+           "200": {
               "description": "Successful Operation",
               "schema": {
                 "$ref": "#/definitions/Users"
