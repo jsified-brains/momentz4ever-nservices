@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "-v",
-    "postinstall": "tsc && node build/app.js"
+    "rimraf": "rimraf",
+    "tsc":"tsc",
+    "clearBuild": "npm run rimraf -- build",
+    "build": "npm run clearBuild && npm run tsc",
+    "startServer": "node build/app.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +27,7 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "minimist": "^1.2.0",
+    "rimraf": "^2.6.1",
     "swagger-node-express": "^2.1.3"
   },
   "devDependencies": {
