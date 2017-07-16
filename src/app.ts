@@ -12,6 +12,11 @@ var argv = minimist(process.argv.slice(2));
 app.use(bodyParser());
 app.use("/v1", subpath);
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 var swagger = swaggerNodeExpress.createNew(subpath);
 app.use(express.static('swagger'));
@@ -54,6 +59,8 @@ app.get('/', function (req, res) {
     console.log('snapJob API running on ' + applicationUrl);
 
     swagger.configure(applicationUrl, '1.0.0');
+
+
 
 
 //configure app
