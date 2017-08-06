@@ -1,15 +1,20 @@
 import * as express from 'express';
 import * as path from 'path';
-import * as bodyParser from 'body-parser';
+//import * as bodyParser  from 'body-parser'; 
 import * as minimist from 'minimist';
 import * as swaggerNodeExpress from 'swagger-node-express';
+import AppMiddleWare from './middleware/middleware'
 
-var app=express();
+let app = express();
 var subpath = express();
 
 var argv = minimist(process.argv.slice(2));
 
-app.use(bodyParser());
+
+AppMiddleWare(app);
+    //app.use(bodyParser.json());
+    //app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/v1", subpath);
 
 app.use(function(req, res, next) {

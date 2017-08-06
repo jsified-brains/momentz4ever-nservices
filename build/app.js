@@ -1,13 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const bodyParser = require("body-parser");
+//import * as bodyParser  from 'body-parser'; 
 const minimist = require("minimist");
 const swaggerNodeExpress = require("swagger-node-express");
-var app = express();
+const middleware_1 = require("./middleware/middleware");
+let app = express();
 var subpath = express();
 var argv = minimist(process.argv.slice(2));
-app.use(bodyParser());
+middleware_1.default(app);
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/v1", subpath);
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
