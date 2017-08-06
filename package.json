@@ -9,7 +9,7 @@
     "tsc": "tsc -w",
     "clearBuild": "npm run rimraf -- build",
     "build": "npm run clearBuild && npm run tsc",
-    "startServer": "node build/app.js"
+    "startServer": "cross-env NODE_ENV=development node build/app.js"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,10 @@
   ],
   "dependencies": {
     "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "helmet": "^3.8.1",
     "minimist": "^1.2.0",
     "mongoose": "^4.11.5",
     "rimraf": "^2.6.1",
@@ -31,9 +33,14 @@
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.4",
+    "@types/compression": "0.0.33",
     "@types/express": "^4.0.35",
+    "@types/helmet": "0.0.35",
     "@types/mongoose": "^4.7.19",
+    "@types/morgan": "^1.7.32",
     "@types/node": "^7.0.21",
+    "cross-env": "^5.0.4",
+    "morgan": "^1.8.2",
     "tslint": "^5.2.0",
     "typescript": "^2.3.2",
     "typings": "^2.1.1"
