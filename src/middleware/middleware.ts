@@ -4,7 +4,7 @@ import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as express from 'express';
 
-const AppMiddleWare  = (app: express.Express) => {
+const AppMiddleware  = (app: express.Express) => {
 
     console.log('process.env.NODE_ENV',  process.env.NODE_ENV);
     commonMiddleware(app);
@@ -40,4 +40,4 @@ const prodMiddleware = (app: express.Express) => {
     app.use(helmet());
 }
 
-export default AppMiddleWare; 
+export default AppMiddleware; 
