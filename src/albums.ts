@@ -3,18 +3,34 @@ var router = express.Router();
 //local data 
 var myAlbums = [
     {   
-        "title":"Album 1.",
-        "id":"1",
+        "title":"Album 1",
+        "albumId":"0",
         "description":"This is the first album",
         "imageUrl":"https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png",
         "createdDate":"05/05/2017",
         "lastViewedOn":"05/06/2017"
     },
     {   
-        "title":"Album 2.",
-        "id":"2",
+        "title":"Album 2",
+        "albumId":"1",
         "description":"This is the second album",
         "imageUrl":"https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+        "createdDate":"05/07/2017",
+        "lastViewedOn":"05/08/2017"
+    },
+    {   
+        "title":"Album 3",
+        "albumId":"2",
+        "description":"This is the first album",
+        "imageUrl":"http://drawabox.com/images/lesson3/ref_hibiscusflower.jpg",
+        "createdDate":"05/05/2017",
+        "lastViewedOn":"05/06/2017"
+    },
+    {   
+        "title":"Album 4",
+        "albumId":"3",
+        "description":"This is the second album",
+        "imageUrl":"http://www.flowerspictures.org/image/flowers/blanket-flowers/blanket-flower-fully-open.jpg",
         "createdDate":"05/07/2017",
         "lastViewedOn":"05/08/2017"
     }
@@ -27,7 +43,7 @@ router.get('/albums',function(req,res){
 
 router.get('/albums/:id',function(req,res){
     let albumWithId=myAlbums.filter(function(album){
-        return album.id===req.params.id;
+        return album.albumId===req.params.id;
     });
     if(albumWithId.length===0){
         res.send("Album Not Found");
@@ -43,7 +59,7 @@ router.delete('/albums',function(req,res){
 
 router.delete('/albums/:id',function(req,res){
     let albumWithId=myAlbums.filter(function(album){
-        return album.id!==req.params.id;
+        return album.albumId!==req.params.id;
     });
        myAlbums = albumWithId;
     res.send({"result":"Album deleted Successfully",
@@ -59,8 +75,8 @@ router.post('/albums',function(req,res){
 
 router.put('/albums/:id',function(req,res){
     for(var i=0;i<myAlbums.length;i++){
-            if(myAlbums[i].id===req.params.id){
-                myAlbums[i].id = req.params.id;
+            if(myAlbums[i].albumId===req.params.id){
+                myAlbums[i].albumId = req.params.id;
                 myAlbums[i].title = req.body.title;
                 myAlbums[i].description = req.body.description;
                 myAlbums[i].imageUrl = req.body.imageUrl;

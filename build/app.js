@@ -55,4 +55,5 @@ swagger.configure(applicationUrl, '1.0.0');
 //app.use(require('./albums'));
 modules_1.default(app);
 app.use(require('./users'));
+app.use(require('./photos'));
 app.listen(1337, () => console.log('ready on port 1337'));
