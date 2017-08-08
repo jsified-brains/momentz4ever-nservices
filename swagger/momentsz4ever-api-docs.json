@@ -137,7 +137,7 @@
           ],
           "parameters":[
                 {
-                    "name": "id",
+                    "name": "albumId",
                     "in": "path",
                     "description": "Album id that needs to be updated",
                     "required": true,
@@ -171,7 +171,7 @@
           ],
           "parameters":[
               {
-                "name": "id",
+                "name": "albumId",
                 "in": "path",
                 "description": "Album-Id to delete",
                 "required": true,
@@ -196,7 +196,7 @@
           ],
           "parameters": [
               {
-                "name": "id",
+                "name": "albumId",
                 "in": "path",
                 "description": "Id of Album to return",
                 "required": true,
@@ -328,7 +328,7 @@
           "type": "string",
           "example": "Album 1"
         },
-        "id": {
+        "albumId": {
           "type": "integer",
           "example": "0"
         },

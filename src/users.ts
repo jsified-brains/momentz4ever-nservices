@@ -22,7 +22,6 @@ router.get('/users',function(req,res){
 });
 
 router.get('/users/:id',function(req,res){
-    console.log(req.params.id);
     let userWithId=myUsers.filter(function(user){
         return user.id===req.params.id;
     });
