@@ -4,6 +4,8 @@ const express = require("express");
 const minimist = require("minimist");
 const swaggerNodeExpress = require("swagger-node-express");
 const middleware_1 = require("./middleware/middleware");
+require("./config/database");
+const modules_1 = require("./modules");
 let app = express();
 let subpath = express();
 let argv = minimist(process.argv.slice(2));
@@ -50,6 +52,8 @@ swagger.configure(applicationUrl, '1.0.0');
 //configure app
 //app.set('view engine','ejs');
 //app.set('views',path.join(__dirname,'views'));
-app.use(require('./albums'));
+//app.use(require('./albums'));
+modules_1.default(app);
 app.use(require('./users'));
+app.use(require('./photos'));
 app.listen(1337, () => console.log('ready on port 1337'));

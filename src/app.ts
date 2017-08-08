@@ -2,7 +2,10 @@ import * as express from 'express';
 import * as path from 'path';
 import * as minimist from 'minimist';
 import * as swaggerNodeExpress from 'swagger-node-express';
-import AppMiddleware from './middleware/middleware'
+import AppMiddleware from './middleware/middleware';
+import './config/database';
+
+import AppRoutes from './modules';
 
 let app = express();
 let subpath = express();
@@ -70,7 +73,9 @@ app.get('/', function (req, res) {
 //app.set('view engine','ejs');
 //app.set('views',path.join(__dirname,'views'));
 
-app.use(require('./albums'));
+//app.use(require('./albums'));
+
+AppRoutes(app);
 app.use(require('./users'));
 app.use(require('./photos'));
 
