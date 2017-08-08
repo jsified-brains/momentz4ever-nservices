@@ -12,15 +12,15 @@ interface APP_CONFIG extends COMMON_CONFIG, ENV_CONFIG {
 }
 
 const devConfig: ENV_CONFIG = {
-    MONGO_URL : 'mongodb//localhost/momentz4ever-api-dev'
+    MONGO_URL : 'mongodb://localhost/momentz4ever-api-dev'
 }
 
 const testConfig: ENV_CONFIG = {
-    MONGO_URL : 'mongodb//localhost/momentz4ever-api-test'
+    MONGO_URL : 'mongodb://localhost/momentz4ever-api-test'
 }
 
 const prodConfig: ENV_CONFIG = {
-    MONGO_URL : 'mongodb//localhost/momentz4ever-api-prod'
+    MONGO_URL : 'mongodb://localhost/momentz4ever-api-prod'
 }
 
 const commonConfig: COMMON_CONFIG = {

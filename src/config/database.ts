@@ -1,11 +1,11 @@
 import * as mongoose  from 'mongoose';
 import AppConfig  from './app-config';
 
-//remove th mongoose promise warning
+//remove the mongoose promise warning
 (<any>mongoose).Promise = global.Promise;
 
 try {
-    mongoose.connect(AppConfig.MONGO_URL)
+    mongoose.connect(AppConfig.MONGO_URL);
 } catch(err){
     mongoose.createConnection(AppConfig.MONGO_URL);
 }

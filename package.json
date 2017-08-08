@@ -27,7 +27,7 @@
     "express": "^4.15.3",
     "helmet": "^3.8.1",
     "minimist": "^1.2.0",
-    "mongoose": "^4.11.5",
+    "mongoose": "^4.10.8",
     "rimraf": "^2.6.1",
     "swagger-node-express": "^2.1.3"
   },
