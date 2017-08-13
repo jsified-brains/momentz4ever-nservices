@@ -76,7 +76,7 @@ app.get('/', function (req, res) {
 //app.use(require('./albums'));
 
 AppRoutes(app);
-app.use(require('./users'));
+//app.use(require('./users'));
 app.use(require('./photos'));
 
 app.listen(1337, () => console.log('ready on port 1337') );
