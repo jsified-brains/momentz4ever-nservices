@@ -4,7 +4,6 @@ import * as minimist from 'minimist';
 import * as swaggerNodeExpress from 'swagger-node-express';
 import AppMiddleware from './middleware/middleware';
 import './config/database';
-
 import AppRoutes from './modules';
 
 let app = express();
@@ -65,9 +64,6 @@ app.get('/', function (req, res) {
     console.log('snapJob API running on ' + applicationUrl);
 
     swagger.configure(applicationUrl, '1.0.0');
-
-
-
 
 //configure app
 //app.set('view engine','ejs');

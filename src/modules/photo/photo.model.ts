@@ -9,20 +9,36 @@ const PhotoSchema = new mongoose.Schema ({
         type: String,
         trim: true,
     },
-    title: {
+    fieldname:{
         type: String,
         trim: true,
-        required: [true, 'Album title required'] 
     },
-    description: {
+    originalname:{
         type: String,
         trim: true,
-        required: [true, 'Album description required'] 
     },
-    imageUrl: {
+    filename:{
         type: String,
         trim: true,
-        required: [true, 'Album name required'] 
+    },
+    encoding: {
+        type: String,
+        trim: true,
+    },
+    mimetype:{
+        type: String,
+        trim: true,   
+    },
+    destination: {
+        type: String,
+        trim: true,
+    },
+    size:{
+        type: String,
+    },
+    path: {
+        type: String,
+        trim: true,
     },
     likeCount:{
         type: Number,
