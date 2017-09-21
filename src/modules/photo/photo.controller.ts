@@ -1,5 +1,6 @@
 import Photo from './photo.model';
 import * as multer from 'multer';
+import * as path from 'path';
 
 export async function add(req, res){
     try {
@@ -20,40 +21,52 @@ export async function get(request, response){
     }
 }
 
-const storage = multer.diskStorage({
-destination: function (req, file, cb) {
- cb(null, './upload/');
-    },
- filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-
 export function uploads(req,res,next){
     console.log("Uploading Files");
-    // console.log("Original Name Is"+req.files[0].originalname);
-        
-        console.log("Original Name Is"+req.files[0].originalname);
-        
+    let filecount= req.files.length;
+      for(let i=0;i<filecount;i++){  
+        console.log("Original Name Is"+req.files[i].originalname);
         let photo = new Photo ({
-            // ownerId: req.files[0].ownerId,
-            // albumId: req.files[0].albumId,
-            fieldname:req.files[0].fieldname,
-            originalname: req.files[0].originalname,
-            encoding: req.files[0].encoding,
-            mimetype: req.files[0].mimetype,
-            destination:req.files[0].destination,
-            filename: req.files[0].filename,
-            path: req.files[0].path,
-            size: req.files[0].size
+            ownerId: req.body.ownerId,
+            albumId: req.body.albumId,
+            fieldname:req.files[i].fieldname,
+            originalname: req.files[i].originalname,
+            encoding: req.files[i].encoding,
+            mimetype: req.files[i].mimetype,
+            destination:req.files[i].destination,
+            filename: req.files[i].filename,
+            path: req.files[i].path,
+            size: req.files[i].size
         })
-        // console.log("Original Name Is"+req.files[0].originalname);
         photo.save(function(err){
             if (err){console.log(err)}
-            else {
-                res.redirect('/');
-            }
         })
-        console.log("Uploading Done");
-    
+    }
+    return res.json(200);
+}
+
+export async function getById(request, response){
+    console.log(request);
+    let imagePath=path.resolve(__dirname+'/../../../upload');
+     try {
+        const photo = await Photo.find({albumId:request.params.id} && {originalname:request.params.name});
+        let a = JSON.stringify(photo[0]);
+        let a1 = JSON.parse(a);
+        let imgName=a1.originalname;
+        var options = {
+            dotfiles: 'deny',
+            headers: {
+                'x-timestamp': Date.now(),
+                'x-sent': true,
+                'Content-Type':'image/jpeg'
+            }
+          };
+
+        response.set('Content-Type', 'image/jpeg');
+        response.contentType('image/jpg');
+        response.sendFile(imagePath+'/'+imgName,options);
+
+    } catch(err){
+        return response.status(500).json(err);
+    }
 }

@@ -42,11 +42,13 @@ const PhotoSchema = new mongoose.Schema ({
     },
     likeCount:{
         type: Number,
-        trim:true
+        trim:true,
+        default: 0
     },
     comment:{
         type: String,
-        trim: true
+        trim: true,
+        default: "good"
     },
     createdOn: {
         type: Date,
